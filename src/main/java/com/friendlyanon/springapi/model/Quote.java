@@ -1,15 +1,16 @@
 package com.friendlyanon.springapi.model;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.NonNull;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 
+@Data
 @Entity
 @EntityListeners(AuditingEntityListener.class)
-@Getter
-@Setter
+@NoArgsConstructor
 @Table(name = "quotes")
 public class Quote {
     @Column(nullable = false)
@@ -17,5 +18,6 @@ public class Quote {
     private int id;
 
     @Column(nullable = false)
+    @NonNull
     private String text;
 }
