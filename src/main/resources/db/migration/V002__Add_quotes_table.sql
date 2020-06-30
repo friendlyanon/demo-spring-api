@@ -1,0 +1,6 @@
+CREATE TABLE IF NOT EXISTS `quotes`
+(
+    `id`   INT  NOT NULL AUTO_INCREMENT,
+    `text` TEXT NOT NULL,
+    PRIMARY KEY (`id`)
+);
