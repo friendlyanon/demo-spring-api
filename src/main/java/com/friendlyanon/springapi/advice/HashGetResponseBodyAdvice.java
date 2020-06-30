@@ -1,7 +1,9 @@
 package com.friendlyanon.springapi.advice;
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.friendlyanon.springapi.model.Hash;
-import com.friendlyanon.springapi.util.HashGetWrapper;
+import com.friendlyanon.springapi.util.serializer.HashListSerializer;
+import lombok.Value;
 import lombok.val;
 import org.springframework.core.MethodParameter;
 import org.springframework.http.MediaType;
@@ -37,5 +39,11 @@ public class HashGetResponseBodyAdvice implements ResponseBodyAdvice<Object> {
         val hashes = (List<Hash>) body;
 
         return new HashGetWrapper(hashes);
+    }
+
+    @JsonSerialize(using = HashListSerializer.class)
+    @Value
+    public static class HashGetWrapper {
+        List<Hash> hashes;
     }
 }
