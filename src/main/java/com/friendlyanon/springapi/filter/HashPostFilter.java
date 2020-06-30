@@ -11,7 +11,7 @@ import javax.servlet.http.HttpFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebFilter("api/v1/hash")
+@WebFilter("/api/v1/hash")
 public class HashPostFilter extends HttpFilter {
     @NonNull
     @Value("${secrets.spring-api.auth-key}")
