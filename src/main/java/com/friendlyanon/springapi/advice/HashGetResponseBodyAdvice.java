@@ -3,6 +3,7 @@ package com.friendlyanon.springapi.advice;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.friendlyanon.springapi.model.Hash;
 import com.friendlyanon.springapi.util.serializer.HashListSerializer;
+import lombok.NonNull;
 import lombok.Value;
 import lombok.val;
 import org.springframework.core.MethodParameter;
@@ -44,6 +45,7 @@ public class HashGetResponseBodyAdvice implements ResponseBodyAdvice<Object> {
     @JsonSerialize(using = HashListSerializer.class)
     @Value
     public static class HashGetWrapper {
+        @NonNull
         List<Hash> hashes;
     }
 }
