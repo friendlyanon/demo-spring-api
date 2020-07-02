@@ -24,8 +24,8 @@ public class HashPostFilter extends HttpFilter {
         HttpServletResponse response,
         FilterChain chain
     ) {
-        val canSaveHashes = request.getMethod().equals("POST")
-            && !AUTH_KEY.equals(request.getHeader("x-hash-auth-key"));
+        val canSaveHashes = "POST".equals(request.getMethod())
+            && AUTH_KEY.equals(request.getHeader("x-hash-auth-key"));
 
         if (canSaveHashes) {
             chain.doFilter(request, response);
