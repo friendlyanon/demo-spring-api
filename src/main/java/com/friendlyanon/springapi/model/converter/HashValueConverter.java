@@ -19,7 +19,9 @@ public class HashValueConverter implements AttributeConverter<HashValue, byte[]>
         val bytes = new byte[HASH_LENGTH / 2];
 
         for (int i = 0; i < HASH_LENGTH; i += 2) {
-            bytes[i / 2] = Byte.parseByte(hex.substring(i, i + 2), 16);
+            val chunk = hex.substring(i, i + 2);
+
+            bytes[i / 2] = (byte) (Integer.parseInt(chunk, 16) & 0xFF);
         }
 
         return bytes;
@@ -29,23 +31,25 @@ public class HashValueConverter implements AttributeConverter<HashValue, byte[]>
     public byte[] convertToDatabaseColumn(HashValue attribute) {
         val hash = attribute.getValue();
         assert hash.length() == HASH_LENGTH
-            : "hash length must be " + HASH_LENGTH;
+            : "hash length must be " + HASH_LENGTH + ", given " + hash.length();
 
         return toByteArray(hash);
     }
 
     private static String toByteHex(byte b) {
-        return leftPad(Integer.toString(b, 16), 2, '0');
+        return leftPad(Integer.toString(Byte.toUnsignedInt(b), 16), 2, '0');
     }
 
     @Override
     public HashValue convertToEntityAttribute(byte[] bytes) {
-        val sb = new StringBuilder(HASH_LENGTH);
+        assert bytes.length == HASH_LENGTH / 2
+            : "bytes length must be " + HASH_LENGTH / 2 + ", given " + bytes.length;
 
+        val sb = new StringBuilder(HASH_LENGTH);
         for (val b : bytes) {
             sb.append(toByteHex(b));
         }
 
-        return HashValue.of(sb.toString());
+        return new HashValue(sb.toString());
     }
 }

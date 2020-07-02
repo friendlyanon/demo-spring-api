@@ -7,7 +7,7 @@ import lombok.NonNull;
 
 import java.io.Serializable;
 
-@Data(staticConstructor = "of")
+@Data
 @JsonSerialize(using = HashValueSerializer.class)
 public class HashValue implements Serializable {
     public static final int HASH_LENGTH = 32;
