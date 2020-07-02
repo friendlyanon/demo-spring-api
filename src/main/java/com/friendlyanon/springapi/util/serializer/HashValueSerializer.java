@@ -1,9 +1,10 @@
 package com.friendlyanon.springapi.util.serializer;
 
+import com.friendlyanon.springapi.model.converter.HashValue;
+
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.JsonSerializer;
 import com.fasterxml.jackson.databind.SerializerProvider;
-import com.friendlyanon.springapi.model.converter.HashValue;
 
 import java.io.IOException;
 

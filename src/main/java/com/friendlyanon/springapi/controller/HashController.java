@@ -2,6 +2,7 @@ package com.friendlyanon.springapi.controller;
 
 import com.friendlyanon.springapi.model.Hash;
 import com.friendlyanon.springapi.repository.HashRepository;
+
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;

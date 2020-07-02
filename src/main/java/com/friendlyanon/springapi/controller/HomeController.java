@@ -1,6 +1,7 @@
 package com.friendlyanon.springapi.controller;
 
 import com.friendlyanon.springapi.repository.QuoteRepository;
+
 import lombok.RequiredArgsConstructor;
 import lombok.val;
 import org.springframework.stereotype.Controller;

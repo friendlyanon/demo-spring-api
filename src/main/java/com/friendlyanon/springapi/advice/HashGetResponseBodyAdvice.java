@@ -1,8 +1,9 @@
 package com.friendlyanon.springapi.advice;
 
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.friendlyanon.springapi.model.Hash;
 import com.friendlyanon.springapi.util.serializer.HashListSerializer;
+
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.NonNull;
 import lombok.Value;
 import lombok.val;

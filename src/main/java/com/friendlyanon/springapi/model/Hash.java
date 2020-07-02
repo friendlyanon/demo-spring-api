@@ -2,6 +2,7 @@ package com.friendlyanon.springapi.model;
 
 import com.friendlyanon.springapi.model.converter.HashValue;
 import com.friendlyanon.springapi.model.converter.HashValueConverter;
+
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
