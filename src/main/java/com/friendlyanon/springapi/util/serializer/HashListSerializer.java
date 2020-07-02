@@ -3,8 +3,8 @@ package com.friendlyanon.springapi.util.serializer;
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.JsonSerializer;
 import com.fasterxml.jackson.databind.SerializerProvider;
+import com.friendlyanon.springapi.advice.HashGetResponseBodyAdvice.HashGetWrapper;
 import com.friendlyanon.springapi.model.Hash;
-import com.friendlyanon.springapi.util.HashGetWrapper;
 import lombok.val;
 
 import java.io.IOException;
