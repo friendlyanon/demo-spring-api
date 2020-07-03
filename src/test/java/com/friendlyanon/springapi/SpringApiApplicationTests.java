@@ -1,6 +1,7 @@
 package com.friendlyanon.springapi;
 
 import com.friendlyanon.springapi.model.converter.HashValueConverter;
+
 import lombok.val;
 import org.junit.jupiter.api.Test;
 
@@ -11,19 +12,15 @@ import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class SpringApiApplicationTests {
-    @Test
-    public void noop() {
-    }
-
+    @SuppressWarnings("CodeBlock2Expr")
     @Test
     public void givenZeroSizedByteArray_whenConvertingToHashValue_thenExceptionIsThrown() {
         val bytes = new byte[0];
         val converter = new HashValueConverter();
 
-        assertThrows(
-            AssertionError.class,
-            () -> converter.convertToEntityAttribute(bytes)
-        );
+        assertThrows(AssertionError.class, () -> {
+            converter.convertToEntityAttribute(bytes);
+        });
     }
 
     @Test
