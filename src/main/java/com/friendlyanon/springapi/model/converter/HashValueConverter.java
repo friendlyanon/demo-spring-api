@@ -21,7 +21,7 @@ public class HashValueConverter implements AttributeConverter<HashValue, byte[]>
         for (int i = 0; i < HASH_LENGTH; i += 2) {
             val chunk = hex.substring(i, i + 2);
 
-            bytes[i / 2] = (byte) (Integer.parseInt(chunk, 16) & 0xFF);
+            bytes[i / 2] = (byte) Integer.parseInt(chunk, 16);
         }
 
         return bytes;
@@ -31,7 +31,7 @@ public class HashValueConverter implements AttributeConverter<HashValue, byte[]>
     public byte[] convertToDatabaseColumn(HashValue attribute) {
         val hash = attribute.getValue();
         assert hash.length() == HASH_LENGTH
-            : "hash length must be " + HASH_LENGTH + ", given " + hash.length();
+            : "hash length must be " + HASH_LENGTH + ", got " + hash.length();
 
         return toByteArray(hash);
     }
@@ -43,7 +43,7 @@ public class HashValueConverter implements AttributeConverter<HashValue, byte[]>
     @Override
     public HashValue convertToEntityAttribute(byte[] bytes) {
         assert bytes.length == HASH_LENGTH / 2
-            : "bytes length must be " + HASH_LENGTH / 2 + ", given " + bytes.length;
+            : "bytes length must be " + HASH_LENGTH / 2 + ", got " + bytes.length;
 
         val sb = new StringBuilder(HASH_LENGTH);
         for (val b : bytes) {
