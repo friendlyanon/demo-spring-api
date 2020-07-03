@@ -6,15 +6,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class ErrorRedirectController implements ErrorController {
-    private static final String ERROR_PATH = "/error";
-
-    @RequestMapping(ERROR_PATH)
-    public String handleError() {
+    @RequestMapping("${server.error.path:error}")
+    public String error() {
         return "redirect:/";
     }
 
+    /**
+     * Implementing this method is required, but it's unused, so it just returns
+     * null.
+     */
     @Override
     public String getErrorPath() {
-        return ERROR_PATH;
+        return null;
     }
 }
