@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 public class HashPostFilter extends HttpFilter {
     @NonNull
     @Value("${secrets.spring-api.auth-key}")
-    private static String AUTH_KEY;
+    private String authKey;
 
     @Override
     @SneakyThrows
@@ -25,7 +25,7 @@ public class HashPostFilter extends HttpFilter {
         FilterChain chain
     ) {
         val canSaveHashes = "POST".equals(request.getMethod())
-            && AUTH_KEY.equals(request.getHeader("x-hash-auth-key"));
+            && authKey.equals(request.getHeader("x-hash-auth-key"));
 
         if (canSaveHashes) {
             chain.doFilter(request, response);
