@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class ErrorRedirectController implements ErrorController {
-    @RequestMapping("${server.error.path:error}")
+    @RequestMapping("${server.error.path}")
     public String error() {
         return "redirect:/";
     }
