@@ -1,6 +1,5 @@
 package com.friendlyanon.springapi.filter;
 
-import lombok.NonNull;
 import lombok.SneakyThrows;
 import lombok.val;
 import org.springframework.beans.factory.annotation.Value;
@@ -13,7 +12,6 @@ import javax.servlet.http.HttpServletResponse;
 
 @WebFilter("/api/v1/hash")
 public class HashPostFilter extends HttpFilter {
-    @NonNull
     @Value("${secrets.spring-api.auth-key}")
     private String authKey;
 

@@ -4,6 +4,8 @@ import org.springframework.boot.web.servlet.error.ErrorController;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.annotation.Nullable;
+
 @Controller
 public class ErrorRedirectController implements ErrorController {
     @RequestMapping("${server.error.path}")
@@ -16,6 +18,7 @@ public class ErrorRedirectController implements ErrorController {
      * null.
      */
     @Override
+    @Nullable
     public String getErrorPath() {
         return null;
     }

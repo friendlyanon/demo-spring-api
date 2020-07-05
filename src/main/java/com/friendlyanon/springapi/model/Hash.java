@@ -28,6 +28,7 @@ public class Hash {
     private int pattern;
 
     @Column(nullable = false)
+    @NonNull
     private String extension;
 
     @Column(nullable = false, unique = true)

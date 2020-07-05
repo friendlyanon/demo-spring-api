@@ -3,6 +3,7 @@ package com.friendlyanon.springapi.controller;
 import com.friendlyanon.springapi.model.Hash;
 import com.friendlyanon.springapi.repository.HashRepository;
 
+import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
@@ -14,6 +15,7 @@ import java.util.List;
 @RequiredArgsConstructor
 @RestController("hash")
 public class HashController {
+    @NonNull
     private final HashRepository hashRepository;
 
     @GetMapping
