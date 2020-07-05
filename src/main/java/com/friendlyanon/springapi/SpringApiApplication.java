@@ -15,9 +15,10 @@ public class SpringApiApplication {
     private static void ensureAssert() {
         try {
             assert false;
-            throw new AssertionError("assert keyword must be enabled");
         } catch (AssertionError expected) {
-            //
+            return;
         }
+
+        throw new AssertionError("assert keyword must be enabled");
     }
 }
