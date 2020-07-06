@@ -3,17 +3,17 @@ package com.friendlyanon.springapi.model;
 import com.friendlyanon.springapi.model.converter.HashValue;
 import com.friendlyanon.springapi.model.converter.HashValueConverter;
 
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.NonNull;
+import lombok.*;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 
-@Data
 @Entity
 @EntityListeners(AuditingEntityListener.class)
+@Getter
 @NoArgsConstructor
+@RequiredArgsConstructor
+@Setter
 @Table(name = "hashes")
 public class Hash {
     /**
