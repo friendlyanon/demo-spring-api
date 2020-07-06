@@ -8,17 +8,6 @@ import org.springframework.boot.web.servlet.ServletComponentScan;
 @SpringBootApplication
 public class SpringApiApplication {
     public static void main(String[] args) {
-        ensureAssert();
         SpringApplication.run(SpringApiApplication.class, args);
-    }
-
-    private static void ensureAssert() {
-        try {
-            assert false;
-        } catch (AssertionError expected) {
-            return;
-        }
-
-        throw new AssertionError("assert keyword must be enabled");
     }
 }
