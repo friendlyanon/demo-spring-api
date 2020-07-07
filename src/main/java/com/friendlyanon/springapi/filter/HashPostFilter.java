@@ -3,6 +3,7 @@ package com.friendlyanon.springapi.filter;
 import lombok.SneakyThrows;
 import lombok.val;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.util.Assert;
 
 import javax.servlet.FilterChain;
 import javax.servlet.annotation.WebFilter;
@@ -12,8 +13,14 @@ import javax.servlet.http.HttpServletResponse;
 
 @WebFilter("/api/v1/hash")
 public class HashPostFilter extends HttpFilter {
-    @Value("${secrets.spring-api.auth-key}")
-    private String authKey;
+    private final String authKey;
+
+    public HashPostFilter(
+        @Value("${secrets.spring-api.auth-key}") String authKey
+    ) {
+        Assert.notNull(authKey, "authKey must not be null");
+        this.authKey = authKey;
+    }
 
     @Override
     @SneakyThrows
