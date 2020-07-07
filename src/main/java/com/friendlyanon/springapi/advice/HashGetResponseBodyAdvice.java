@@ -1,7 +1,7 @@
 package com.friendlyanon.springapi.advice;
 
+import com.friendlyanon.springapi.json.serializer.ListOfHashSerializer;
 import com.friendlyanon.springapi.model.Hash;
-import com.friendlyanon.springapi.util.serializer.HashListSerializer;
 
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.NonNull;
@@ -41,7 +41,7 @@ public class HashGetResponseBodyAdvice implements ResponseBodyAdvice<Object> {
         return new HashGetWrapper((List<Hash>) body);
     }
 
-    @JsonSerialize(using = HashListSerializer.class)
+    @JsonSerialize(using = ListOfHashSerializer.class)
     @Value
     public static class HashGetWrapper {
         @NonNull

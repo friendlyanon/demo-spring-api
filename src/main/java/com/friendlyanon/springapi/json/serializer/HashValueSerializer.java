@@ -1,4 +1,4 @@
-package com.friendlyanon.springapi.util.serializer;
+package com.friendlyanon.springapi.json.serializer;
 
 import com.friendlyanon.springapi.model.converter.HashValue;
 

@@ -1,4 +1,4 @@
-package com.friendlyanon.springapi.util.serializer;
+package com.friendlyanon.springapi.json.serializer;
 
 import com.friendlyanon.springapi.advice.HashGetResponseBodyAdvice.HashGetWrapper;
 import com.friendlyanon.springapi.model.Hash;
@@ -14,7 +14,7 @@ import java.io.IOException;
  * The list of {@link Hash} can safely be converted to an object keyed by its
  * "id" field, because it's always unique.
  */
-public class HashListSerializer extends JsonSerializer<HashGetWrapper> {
+public class ListOfHashSerializer extends JsonSerializer<HashGetWrapper> {
     /**
      * This is basically a keyBy operation.
      */

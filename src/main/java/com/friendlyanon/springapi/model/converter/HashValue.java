@@ -1,6 +1,6 @@
 package com.friendlyanon.springapi.model.converter;
 
-import com.friendlyanon.springapi.util.serializer.HashValueSerializer;
+import com.friendlyanon.springapi.json.serializer.HashValueSerializer;
 
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Data;
