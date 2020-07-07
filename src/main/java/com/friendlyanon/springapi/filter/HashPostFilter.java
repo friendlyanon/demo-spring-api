@@ -34,7 +34,7 @@ public class HashPostFilter extends HttpFilter {
     public void init(FilterConfig filterConfig) {
         super.init(filterConfig);
 
-        this.authKey = getAuthKeyFromApplicationContext(filterConfig);
+        authKey = getAuthKeyFromApplicationContext(filterConfig);
     }
 
     @Override
