@@ -1,7 +1,7 @@
 package com.friendlyanon.springapi.controller;
 
 import com.friendlyanon.springapi.model.Hash;
-import com.friendlyanon.springapi.repository.HashRepository;
+import com.friendlyanon.springapi.service.HashService;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
@@ -14,15 +14,15 @@ import java.util.List;
 @RequiredArgsConstructor
 @RestController("hash")
 public class HashController {
-    private final HashRepository hashRepository;
+    private final HashService hashService;
 
     @GetMapping
     public List<Hash> getHashes(@RequestParam List<Integer> id) {
-        return hashRepository.findAllById(id);
+        return hashService.getHashes(id);
     }
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
     public void saveHashes(List<Hash> hashes) {
-        hashRepository.saveAll(hashes);
+        hashService.saveHashes(hashes);
     }
 }

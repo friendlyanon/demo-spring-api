@@ -1,6 +1,6 @@
 package com.friendlyanon.springapi.controller;
 
-import com.friendlyanon.springapi.repository.QuoteRepository;
+import com.friendlyanon.springapi.service.QuoteService;
 
 import lombok.RequiredArgsConstructor;
 import lombok.val;
@@ -13,13 +13,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/")
 @RequiredArgsConstructor
 public class HomeController {
-    private final QuoteRepository quoteRepository;
+    private final QuoteService quoteService;
 
     @GetMapping
     public String home(Model model) {
-        val quote = quoteRepository
-            .getRandomQuoteText()
-            .orElse("Nothing to see here!");
+        val quote = quoteService
+            .getRandomQuoteTextOr("Nothing to see here!");
         model.addAttribute("quote", quote);
 
         return "home";
