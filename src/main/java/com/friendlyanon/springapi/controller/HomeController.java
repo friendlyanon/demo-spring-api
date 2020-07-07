@@ -2,7 +2,6 @@ package com.friendlyanon.springapi.controller;
 
 import com.friendlyanon.springapi.repository.QuoteRepository;
 
-import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.val;
 import org.springframework.stereotype.Controller;
@@ -14,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/")
 @RequiredArgsConstructor
 public class HomeController {
-    @NonNull
     private final QuoteRepository quoteRepository;
 
     @GetMapping

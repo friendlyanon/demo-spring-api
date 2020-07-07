@@ -5,11 +5,11 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 
+@AllArgsConstructor
 @Entity
 @EntityListeners(AuditingEntityListener.class)
 @Getter
 @NoArgsConstructor
-@RequiredArgsConstructor
 @Setter
 @Table(name = "quotes")
 public class Quote {

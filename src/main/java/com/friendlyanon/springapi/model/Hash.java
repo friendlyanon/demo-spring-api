@@ -1,17 +1,20 @@
 package com.friendlyanon.springapi.model;
 
+import com.friendlyanon.springapi.json.deserializer.HashDeserializer;
 import com.friendlyanon.springapi.model.converter.HashValue;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import lombok.*;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 
+@AllArgsConstructor
 @Entity
 @EntityListeners(AuditingEntityListener.class)
 @Getter
+@JsonDeserialize(using = HashDeserializer.class)
 @NoArgsConstructor
-@RequiredArgsConstructor
 @Setter
 @Table(name = "hashes")
 public class Hash {
