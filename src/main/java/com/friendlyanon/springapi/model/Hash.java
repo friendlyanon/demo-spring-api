@@ -1,7 +1,6 @@
 package com.friendlyanon.springapi.model;
 
 import com.friendlyanon.springapi.model.converter.HashValue;
-import com.friendlyanon.springapi.model.converter.HashValueConverter;
 
 import lombok.*;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
@@ -32,7 +31,6 @@ public class Hash {
     private String extension;
 
     @Column(nullable = false, unique = true)
-    @Convert(converter = HashValueConverter.class)
     @NonNull
     private HashValue hash;
 }

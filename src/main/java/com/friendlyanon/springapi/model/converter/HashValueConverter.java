@@ -13,7 +13,7 @@ import static org.apache.commons.lang3.StringUtils.leftPad;
  * string and vice versa. This allows for less space usage in the database at
  * the cost of some minimal CPU time to convert that hash back and forth.
  */
-@Converter
+@Converter(autoApply = true)
 public class HashValueConverter implements AttributeConverter<HashValue, byte[]> {
     private static byte[] toByteArray(String hex) {
         val bytes = new byte[HASH_LENGTH / 2];
