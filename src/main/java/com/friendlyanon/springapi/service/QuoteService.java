@@ -8,7 +8,7 @@ import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Service;
 
 @AllArgsConstructor
-@Service("quote")
+@Service("quoteService")
 public class QuoteService {
     private final QuoteRepository quoteRepository;
 

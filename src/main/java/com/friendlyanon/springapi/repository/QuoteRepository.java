@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Repository;
 
-@Repository("quote")
+@Repository("quoteRepository")
 public interface QuoteRepository extends JpaRepository<Quote, Integer> {
     /**
      * {@code RAND()} is a MySQL function, so this needs to be a native query.

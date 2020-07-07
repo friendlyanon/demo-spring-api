@@ -12,7 +12,7 @@ import java.util.List;
 @CrossOrigin
 @RequestMapping("api/v1/hash")
 @RequiredArgsConstructor
-@RestController("hash")
+@RestController("hashController")
 public class HashController {
     private final HashService hashService;
 

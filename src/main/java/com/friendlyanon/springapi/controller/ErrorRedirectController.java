@@ -5,7 +5,7 @@ import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-@Controller
+@Controller("errorRedirectController")
 public class ErrorRedirectController implements ErrorController {
     @RequestMapping("${server.error.path}")
     public String error() {

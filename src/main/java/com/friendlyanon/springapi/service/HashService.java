@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @AllArgsConstructor
-@Service("hash")
+@Service("hashService")
 public class HashService {
     private final HashRepository hashRepository;
 

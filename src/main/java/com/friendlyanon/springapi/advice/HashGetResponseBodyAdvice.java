@@ -18,7 +18,7 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
 
 import java.util.List;
 
-@RestControllerAdvice("hash")
+@RestControllerAdvice("hashGetResponseBodyAdvice")
 public class HashGetResponseBodyAdvice implements ResponseBodyAdvice<Object> {
     @Override
     public boolean supports(
