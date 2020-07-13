@@ -23,6 +23,8 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>11</java.version>
+        <maven.compiler.source>${java.version}</maven.compiler.source>
+        <maven.compiler.target>${java.version}</maven.compiler.target>
         <checkstyle.version>3.1.1</checkstyle.version>
         <spotbugs.annotations.version>4.0.6</spotbugs.annotations.version>
         <spotbugs.maven.version>4.0.4</spotbugs.maven.version>
@@ -105,16 +107,6 @@
         </dependency>
     </dependencies>
 
-    <reporting>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-checkstyle-plugin</artifactId>
-                <version>${checkstyle.version}</version>
-            </plugin>
-        </plugins>
-    </reporting>
-
     <build>
         <plugins>
             <plugin>
@@ -140,6 +132,7 @@
                 <artifactId>maven-checkstyle-plugin</artifactId>
                 <version>${checkstyle.version}</version>
                 <configuration>
+                    <encoding>UTF-8</encoding>
                     <consoleOutput>true</consoleOutput>
                     <configLocation>checkstyle.xml</configLocation>
                 </configuration>
@@ -158,13 +151,37 @@
                 <groupId>com.github.spotbugs</groupId>
                 <artifactId>spotbugs-maven-plugin</artifactId>
                 <version>${spotbugs.maven.version}</version>
+                <configuration>
+                    <effort>Max</effort>
+                    <threshold>Low</threshold>
+                    <excludeFilterFile>spotbugs-exclude.xml</excludeFilterFile>
+                </configuration>
                 <executions>
                     <execution>
-                        <id>validate</id>
-                        <phase>validate</phase>
+                        <phase>compile</phase>
                         <goals>
                             <goal>check</goal>
                         </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!-- For whatever reason Spring (or IDEA?) stopped exporting the metadata -->
+            <plugin>
+                <groupId>com.coderplus.maven.plugins</groupId>
+                <artifactId>copy-rename-maven-plugin</artifactId>
+                <version>1.0</version>
+                <executions>
+                    <execution>
+                        <id>copy-meta</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>copy</goal>
+                        </goals>
+                        <configuration>
+                            <sourceFile>target/classes/META-INF/spring-configuration-metadata.json</sourceFile>
+                            <destinationFile>src/main/resources/META-INF/additional-spring-configuration-metadata.json</destinationFile>
+                        </configuration>
                     </execution>
                 </executions>
             </plugin>
