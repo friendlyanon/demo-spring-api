@@ -1,9 +1,18 @@
 {
+  "groups": [
+    {
+      "name": "secrets",
+      "type": "com.friendlyanon.springapi.property.SecretProperties",
+      "sourceType": "com.friendlyanon.springapi.property.SecretProperties"
+    }
+  ],
   "properties": [
     {
-      "name": "secrets.spring-api.auth-key",
+      "name": "secrets.auth-key",
       "type": "java.lang.String",
-      "description": "The x-auth-key headers must match this value to be able to save new hashes."
+      "description": "Clients must send this key with the x-hash-auth-key header if they wish to persist new hashes into the database.",
+      "sourceType": "com.friendlyanon.springapi.property.SecretProperties"
     }
-  ]
+  ],
+  "hints": []
 }

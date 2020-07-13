@@ -23,7 +23,7 @@ public class HashPostFilter extends HttpFilter {
         val env = WebApplicationContextUtils
             .getRequiredWebApplicationContext(ctx)
             .getEnvironment();
-        val authKey = env.getProperty("secrets.spring-api.auth-key");
+        val authKey = env.getProperty("secrets.auth-key");
 
         Assert.notNull(authKey, "authKey must not be null");
         return authKey;
