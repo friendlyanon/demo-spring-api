@@ -16,13 +16,16 @@ import java.util.List;
 public class HashController {
     private final HashService hashService;
 
+    /**
+     * TODO(friendlyanon): for whatever reason this endpoint is never hit.
+     */
     @GetMapping
     public List<Hash> getHashes(@RequestParam List<Integer> id) {
         return hashService.getHashes(id);
     }
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
-    public void saveHashes(List<Hash> hashes) {
+    public void saveHashes(@RequestBody List<Hash> hashes) {
         hashService.saveHashes(hashes);
     }
 }
