@@ -4,7 +4,6 @@ import com.friendlyanon.springapi.json.serializer.ListOfHashSerializer;
 import com.friendlyanon.springapi.model.Hash;
 
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import lombok.NonNull;
 import lombok.Value;
 import org.springframework.core.MethodParameter;
 import org.springframework.http.MediaType;
@@ -38,13 +37,16 @@ public class HashGetResponseBodyAdvice implements ResponseBodyAdvice<Object> {
         ServerHttpRequest request,
         ServerHttpResponse response
     ) {
+        if (body == null) {
+            throw new NullPointerException("unreachable");
+        }
+
         return new HashGetWrapper((List<Hash>) body);
     }
 
     @JsonSerialize(using = ListOfHashSerializer.class)
     @Value
     public static class HashGetWrapper {
-        @NonNull
         List<Hash> hashes;
     }
 }

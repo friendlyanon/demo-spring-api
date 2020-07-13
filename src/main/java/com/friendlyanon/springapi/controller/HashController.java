@@ -3,15 +3,15 @@ package com.friendlyanon.springapi.controller;
 import com.friendlyanon.springapi.model.Hash;
 import com.friendlyanon.springapi.service.HashService;
 
-import lombok.RequiredArgsConstructor;
+import lombok.AllArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@AllArgsConstructor
 @CrossOrigin
 @RequestMapping("api/v1/hash")
-@RequiredArgsConstructor
 @RestController("hashController")
 public class HashController {
     private final HashService hashService;
