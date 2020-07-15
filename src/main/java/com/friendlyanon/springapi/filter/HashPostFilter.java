@@ -44,13 +44,16 @@ public class HashPostFilter extends HttpFilter {
         HttpServletResponse response,
         FilterChain chain
     ) {
-        val canSaveHashes = "POST".equals(request.getMethod())
-            && authKey.equals(request.getHeader("x-hash-auth-key"));
+        if ("POST".equals(request.getMethod())) {
+            val canSaveHashes = authKey
+                .equals(request.getHeader("x-hash-auth-key"));
 
-        if (canSaveHashes) {
-            chain.doFilter(request, response);
-        } else {
-            response.sendError(HttpServletResponse.SC_FORBIDDEN);
+            if (!canSaveHashes) {
+                response.sendError(HttpServletResponse.SC_FORBIDDEN);
+                return;
+            }
         }
+
+        chain.doFilter(request, response);
     }
 }
