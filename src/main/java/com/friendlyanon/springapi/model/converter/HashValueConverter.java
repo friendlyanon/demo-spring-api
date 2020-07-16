@@ -1,9 +1,7 @@
 package com.friendlyanon.springapi.model.converter;
 
 import lombok.val;
-
-import javax.persistence.AttributeConverter;
-import javax.persistence.Converter;
+import org.springframework.stereotype.Component;
 
 import static com.friendlyanon.springapi.model.converter.HashValue.HASH_LENGTH;
 import static org.apache.commons.lang3.StringUtils.leftPad;
@@ -13,8 +11,8 @@ import static org.apache.commons.lang3.StringUtils.leftPad;
  * string and vice versa. This allows for less space usage in the database at
  * the cost of some minimal CPU time to convert that hash back and forth.
  */
-@Converter(autoApply = true)
-public class HashValueConverter implements AttributeConverter<HashValue, byte[]> {
+@Component("hashValueConverter")
+public class HashValueConverter {
     private static byte[] toByteArray(String hex) {
         val bytes = new byte[HASH_LENGTH / 2];
 
@@ -27,7 +25,6 @@ public class HashValueConverter implements AttributeConverter<HashValue, byte[]>
         return bytes;
     }
 
-    @Override
     public byte[] convertToDatabaseColumn(HashValue attribute) {
         val hash = attribute.getValue();
         assert hash.length() == HASH_LENGTH
@@ -40,7 +37,6 @@ public class HashValueConverter implements AttributeConverter<HashValue, byte[]>
         return leftPad(Integer.toString(Byte.toUnsignedInt(b), 16), 2, '0');
     }
 
-    @Override
     public HashValue convertToEntityAttribute(byte[] bytes) {
         assert bytes.length == HASH_LENGTH / 2
             : "bytes length must be " + HASH_LENGTH / 2 + ", got " + bytes.length;

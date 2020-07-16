@@ -1,23 +1,24 @@
 package com.friendlyanon.springapi.service;
 
+import com.friendlyanon.springapi.dao.HashDao;
 import com.friendlyanon.springapi.model.Hash;
-import com.friendlyanon.springapi.repository.HashRepository;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.Collection;
 import java.util.List;
 
 @AllArgsConstructor
 @Service("hashService")
 public class HashService {
-    private final HashRepository hashRepository;
+    private final HashDao hashDao;
 
-    public List<Hash> getHashes(Iterable<Integer> hashIds) {
-        return hashRepository.findAllById(hashIds);
+    public List<Hash> getHashes(Collection<Integer> hashIds) {
+        return hashDao.findAllById(hashIds);
     }
 
-    public void saveHashes(Iterable<Hash> hashes) {
-        hashRepository.saveAll(hashes);
+    public void saveHashes(Collection<Hash> hashes) {
+        hashDao.saveAll(hashes);
     }
 }
